@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .menu-page {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+
+            border-image-source: url('menulayout.jpeg');
+            /* Trial slice values */
+            border-image-slice: 160 140 160 140 fill;
+            /* Trial width (percentage means it scales with element width) */
+            border-width: 18% 15%;
+            border-image-repeat: stretch;
+            border-style: solid;
+            /* Required for border-image to work */
+
+            /* The internal space will be taken by the fill, so no padding needed 
+       for the border graphics themselves, but we add some text padding */
+            padding: 0 5%;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            color: #111;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="menu-page">
+        <h1>Test Menu Header</h1>
+        <p>This is a paragraph of text to see how it flows. It should stay completely inside the "fill" area and not
+            overlap the decorative borders, provided the slice is correct.</p>
+        <p>More text...</p>
+        <p>More text...</p>
+        <p>More text...</p>
+        <p>More text...</p>
+        <p>More text...</p>
+        <p>More text...</p>
+        <p>More text...</p>
+    </div>
+</body>
+
+</html>
