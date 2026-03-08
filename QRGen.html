@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Menu QR Code</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <title>Menu QR Code</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 
 <body style="text-align:center; font-family:Arial">
 
-<h2>Restaurant Menu QR Code</h2>
+    <h2>Restaurant Menu QR Code</h2>
 
-<div id="qrcode"></div>
+    <div id="qrcode"></div>
 
-<script>
-var menuURL = "https://abcdmenupage.vercel.app/";
+    <script>
+        var menuURL = "https://abcdlaunchmenu.vercel.app/";
 
-new QRCode(document.getElementById("qrcode"), {
-    text: menuURL,
-    width: 300,
-    height: 300
-});
-</script>
+        new QRCode(document.getElementById("qrcode"), {
+            text: menuURL,
+            width: 300,
+            height: 300
+        });
+    </script>
 
-<p>Scan this QR to view the menu</p>
+    <p>Scan this QR to view the menu</p>
 
 </body>
+
 </html>
