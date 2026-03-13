@@ -112,12 +112,9 @@ document.addEventListener("DOMContentLoaded", () => {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
             
-            // Subtle glow
+            // Replaced expensive shadowBlur with pure fill to maintain 60FPS on mobile
             ctx.fillStyle = `hsla(${this.hue}, 100%, 70%, ${opacity})`;
-            ctx.shadowBlur = this.size * 3;
-            ctx.shadowColor = `hsla(${this.hue}, 100%, 50%, ${opacity})`;
             ctx.fill();
-            ctx.shadowBlur = 0; // Reset for performance
         }
     }
 
@@ -229,19 +226,26 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.globalCompositeOperation = 'screen';
         ctx.fill();
 
-        // Draw smoke and flames
+        // Batch rendering by grouping composite operations
+        // 1. Draw all smoke (multiply)
+        ctx.globalCompositeOperation = 'multiply';
         smokeParticles.forEach(p => {
-            p.update();
-            p.draw();
+            if (!p.isFlame) p.draw();
         });
 
-        // Mix blending mode for fiery sparks
+        // 2. Draw all flames and sparks (screen)
         ctx.globalCompositeOperation = 'screen';
+        smokeParticles.forEach(p => {
+            if (p.isFlame) p.draw();
+        });
         
         particles.forEach(p => {
             p.update();
             p.draw();
         });
+
+        // update smoke after drawing to avoid mixed state
+        smokeParticles.forEach(p => p.update());
 
         requestAnimationFrame(animate);
     }
