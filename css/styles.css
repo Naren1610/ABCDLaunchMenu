@@ -244,12 +244,15 @@ body.page-exiting {
 .brand-subtitle {
     font-family: var(--font-body);
     font-weight: 300;
-    font-size: 1.1rem;
-    letter-spacing: 0.3em;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
     color: var(--color-primary);
     margin-top: var(--spacing-sm);
-    text-transform: uppercase;
+    text-transform: none;
     opacity: 0.85;
+    max-width: 320px;
+    line-height: 1.6;
+    font-style: italic;
 }
 
 /* Entrance Action */
